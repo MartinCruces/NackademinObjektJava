@@ -26,7 +26,7 @@ public class Greenest{
                 case "Putte" -> putte.printNutrients();
                 case "Meatloaf" -> meatloaf.printNutrients();
                 case "1" -> System.exit(0);
-                default -> System.out.println("Den plantan finns inte här");
+                default -> System.out.println("Den växten finns inte här");
             }
 
         }
