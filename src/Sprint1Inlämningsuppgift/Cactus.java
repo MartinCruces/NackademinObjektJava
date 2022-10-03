@@ -12,6 +12,8 @@ public class Cactus extends Plants implements Nutrition{
 
     @Override
     public void printNutrients() {
-        JOptionPane.showMessageDialog(null,"Kaktusen " +  getNamePlant() + " behöver " + mineralWater + " cl mineralvatten per dag");
+        JOptionPane.showMessageDialog(null,
+                "Kaktusen " +  getNamePlant() + " behöver " +
+                        mineralWater + " cl mineralvatten per dag");
     }
 }

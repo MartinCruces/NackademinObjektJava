@@ -31,20 +31,11 @@ public class Greenest{
 
         }
 
-
-
-
     }
-
-
-
 
     public static void main(String[] args){
 
         Greenest input = new Greenest();
-
-
-
 
     }
 }

@@ -9,12 +9,13 @@ public class Carnivorous extends Plants implements Nutrition{
     protected double amountOfProtein;
     public Carnivorous(String name, double height){
         super(name, height);
-         amountOfProtein = liquidProteinBase * (extraProtein * height);
+         amountOfProtein = liquidProteinBase + (extraProtein * height);
     }
 
     @Override
     public void printNutrients() {
-        JOptionPane.showMessageDialog(null,"Köttätande växten " + getNamePlant() + " behöver " +
+        JOptionPane.showMessageDialog(null,
+                "Köttätande växten " + getNamePlant() + " behöver " +
                 amountOfProtein + " liter protein per dag.");
     }
 }

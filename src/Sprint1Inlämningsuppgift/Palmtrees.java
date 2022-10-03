@@ -11,7 +11,8 @@ public class Palmtrees extends Plants implements Nutrition{
     }
     @Override
     public void printNutrients() {
-        JOptionPane.showMessageDialog(null, "Palmen " + getNamePlant() + " behöver " + amountWater + " liter vatten per dag");
-
+        JOptionPane.showMessageDialog(null,
+                "Palmen " + getNamePlant() + " behöver " +
+                        amountWater + " liter vatten per dag");
     }
 }
