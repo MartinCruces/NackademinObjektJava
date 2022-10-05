@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class CarnivorousTest {
 
     @Test
-    void amountofProteinHight4(){
+    void amountOfProteinHeight4(){
         Carnivorous c = new Carnivorous("Köttis", 4);
         assertEquals(0.9, c.amountOfProtein);
         assertNotEquals(4.3, c.amountOfProtein);
