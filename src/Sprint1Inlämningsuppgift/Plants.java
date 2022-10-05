@@ -1,5 +1,6 @@
 package Sprint1Inlämningsuppgift;
 
+//Plants är superklass till respektive art-subklassrna. Subklasserna ärver namn och höjd som alla växterna har.
 public class Plants {
     private String namePlant;
     private Double height;
