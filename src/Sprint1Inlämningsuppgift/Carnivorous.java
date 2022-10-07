@@ -8,7 +8,6 @@ public class Carnivorous extends Plants implements Nutrition{
         super(name, height);
          amountOfProtein = Nutrition.liquidBaseProtein + (Nutrition.extraProtein * height);
     }
-
     @Override
     public void printNutrients() {
         JOptionPane.showMessageDialog(null,

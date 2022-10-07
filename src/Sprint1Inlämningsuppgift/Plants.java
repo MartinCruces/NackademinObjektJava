@@ -1,9 +1,9 @@
 package Sprint1Inlämningsuppgift;
 
-//Plants är superklass till respektive art-subklassrna. Subklasserna ärver namn och höjd som alla växterna har.
-public class Plants {
-    protected String namePlant;
-    private Double height;
+//Plants är en abstrakt superklass till respektive art-subklassrna. Subklasserna ärver namn och höjd som alla växterna har.
+public abstract class Plants {
+     private String namePlant;
+     private double height;
 
     public Plants(){}
 
@@ -17,5 +17,4 @@ public class Plants {
     public Double getHeight() {
         return height;
     }
-
 }

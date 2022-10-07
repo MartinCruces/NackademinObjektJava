@@ -3,10 +3,8 @@ package Sprint1Inlämningsuppgift;
 public enum Measure {
       LITERS ("liter"),
       CENTILITERS ("centiliter");
-
       public final String measure;
-
-       Measure(String s){
+      Measure(String s){
           measure = s;
       }
 
