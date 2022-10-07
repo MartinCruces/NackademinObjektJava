@@ -3,9 +3,6 @@ package Sprint1Inlämningsuppgift;
 import javax.swing.*;
 
 public class Carnivorous extends Plants implements Nutrition{
-
-
-
     protected double amountOfProtein;
     public Carnivorous(String name, double height){
         super(name, height);

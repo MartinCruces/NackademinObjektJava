@@ -8,7 +8,7 @@ public class Greenest{
     public Greenest(){
         /*Instansierar alla växternas värden och skapar en lista av dem. Skriver ut listan så att användaren får se
         vilka växter som är inskrivna. Loop med switch-sats där användaren kan skriva in namnet på växten och
-        får skötselinstruktion. Avslutas när användaren skriver exit.*/
+        får skötselinstruktion. Avslutas när användaren skriver 0.*/
         Cactus igge = new Cactus("Igge", 20);
         Palmtrees laura = new Palmtrees("Laura", 5);
         Palmtrees putte = new Palmtrees("Putte", 1);
@@ -23,7 +23,6 @@ public class Greenest{
         for (Plants s : totalPlants) {
             list += "\n" + s.getNamePlant();
         }
-
         String input = null;
         while (true) {
             try{
@@ -51,7 +50,8 @@ public class Greenest{
 
     public static void main(String[] args){
         //Anropar huvudmetoden.
-        Greenest input = new Greenest();
+        Greenest run = new Greenest();
+
 
     }
 }

@@ -1,7 +1,5 @@
 package Sprint1Inlämningsuppgift;
-//Interface för utskrifter till de olika subklasserna för växter.
-// Det är samma metod används i varje klass men genererar olika resutlat beroende på vilket
-//objekt som anropar den och är ett exempel på polymorfism.
+//Interface för utskrifter och näringsvariabler till de olika subklasserna för växter.
 
 public interface Nutrition {
 

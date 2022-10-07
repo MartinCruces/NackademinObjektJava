@@ -13,5 +13,4 @@ class CarnivorousTest {
         assertNotEquals(4.3, c.amountOfProtein);
         assertNotEquals(0.18, c.amountOfProtein);
     }
-
 }

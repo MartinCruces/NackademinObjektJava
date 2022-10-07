@@ -21,6 +21,4 @@ class PalmtreesTest {
         assertEquals("Palme", p.getNamePlant());
         assertNotEquals(null, p.getNamePlant());
     }
-
-
 }
