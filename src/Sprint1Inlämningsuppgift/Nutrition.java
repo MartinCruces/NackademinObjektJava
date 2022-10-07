@@ -8,16 +8,4 @@ public interface Nutrition {
     double liquidBaseProtein = 0.1;
     double extraProtein =0.2;
     void printNutrients();
-    default double getMineralWater(){
-        return mineralWater;
-    }
-    default double getTapWater(){
-        return tapWater;
-    }
-    default double getLiquidBaseProtein(){
-        return liquidBaseProtein;
-    }
-    default double getExtraProtein(){
-        return extraProtein;
-    }
 }

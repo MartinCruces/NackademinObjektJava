@@ -23,7 +23,7 @@ public class Greenest{
         for (Plants s : totalPlants) {
             list += "\n" + s.getNamePlant();
         }
-        String input = null;
+        String input;
         while (true) {
             try{
             input = JOptionPane.showInputDialog(  list + "\n" +
@@ -32,7 +32,7 @@ public class Greenest{
                     "\nVilken växt ska få vätska?");
             }
             catch (Exception e){
-
+                continue;
             }
             input = input.trim().toLowerCase();
             switch (input) {
@@ -43,15 +43,11 @@ public class Greenest{
                 case "0" -> System.exit(0);
                 default -> JOptionPane.showMessageDialog(null,"Den växten finns inte här");
             }
-
         }
-
     }
 
     public static void main(String[] args){
         //Anropar huvudmetoden.
         Greenest run = new Greenest();
-
-
     }
 }
