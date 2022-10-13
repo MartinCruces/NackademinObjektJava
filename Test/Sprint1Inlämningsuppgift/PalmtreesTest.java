@@ -1,5 +1,6 @@
 package Sprint1Inlämningsuppgift;
 
+import Sprint1Inlämningsuppgift.Palmtrees;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

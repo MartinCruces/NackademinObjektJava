@@ -1,5 +1,6 @@
 package Sprint1Inlämningsuppgift;
 
+import Sprint1Inlämningsuppgift.Carnivorous;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
