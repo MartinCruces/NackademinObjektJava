@@ -7,6 +7,7 @@ public class MainFuelConsumtion {
     public MainFuelConsumtion(){
         FuelConsumptionCalculator input = new FuelConsumptionCalculator();
         Scanner sc = new Scanner(System.in);
+
         System.out.println("Mätarställning förra året (mil):");
         try {
             input.milesLastYear = Double.parseDouble(sc.nextLine().trim());
