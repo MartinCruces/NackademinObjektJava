@@ -20,6 +20,7 @@ class TriangleTest {
     @Test
     public void testHypotenuse(){
 
+
         assertEquals(t1.hypotenuse(), 5);
         System.out.println(t1.hypotenuse());
     }
