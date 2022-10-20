@@ -7,20 +7,21 @@ import java.util.List;
 public class MethodHandler {
 
     public boolean checkPaymentDate(LocalDate payDate){
-        boolean paymentValidation;
+        boolean paymentValidation = false;
 
         LocalDate lastYearDate = LocalDate.now().minusYears(1).minusDays(1);
         if (payDate.isAfter(lastYearDate)){
             paymentValidation = true;
+            System.out.println("Medlemsavgiften är betald");
         }
-        else paymentValidation = false;
+        else if (payDate.isBefore(lastYearDate)){
+            paymentValidation = false;
+            System.out.println(("Medlemsavgiften är inte betald"));
+        }
 
         return paymentValidation;
     }
-    public LocalDate parseStringToLocalDate(String date){
 
-        return LocalDate.parse(date.trim());
-    }
 
     public Customer checkCustomerExist(String input, List<Customer> customerList){
 
@@ -35,7 +36,7 @@ public class MethodHandler {
         }
         return null;
     }
-    public List<Customer> addPayingCustomer(String input, List<Customer> customerList){
+    /*public Customer addPayingCustomer(Customer customerList){
         List<Customer> activeCustomer = new ArrayList<>();
         for(Customer c : customerList) {
             if (input.equals(c.fullName)) {
@@ -50,5 +51,5 @@ public class MethodHandler {
             else System.out.println("Kunden har inte betalt medlemsavgiften");
         }
         return activeCustomer;
-    }
+    }*/
 }

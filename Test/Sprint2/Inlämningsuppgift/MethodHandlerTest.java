@@ -6,7 +6,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class FileReaderTest {
+class MethodHandlerTest {
 
     MethodHandler test = new MethodHandler();
 
@@ -22,16 +22,9 @@ class FileReaderTest {
         assertTrue(test.checkPaymentDate(dateNotOK) == false);
         assertFalse(test.checkPaymentDate(dateOK) == false);
     }
-    @Test
-    public void parseStringToLocalDate(){
-        String date = "2022-01-10";
-        LocalDate temp = LocalDate.of(2022, 01, 10);
-        LocalDate temp2 = LocalDate.of(2022, 01, 11);
-        System.out.println(LocalDate.parse(date.trim()));
-        assert(test.parseStringToLocalDate(date).equals(temp));
-        assert(!test.parseStringToLocalDate(date).equals(temp2));
 
-    }
+
+
     @Test
     public void checkCustomerExist(){
         String testName1 = "Alhambra Aromes";

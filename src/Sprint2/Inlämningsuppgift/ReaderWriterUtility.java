@@ -1,9 +1,6 @@
 package Sprint2.Inlämningsuppgift;
 
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -14,14 +11,13 @@ import java.util.Scanner;
 
 public class ReaderWriterUtility{
 
-    public static List<Customer> fileReader (String customerFile) {
+    public static List<Customer> fileReaderToList (String customerFile) {
         List<Customer> customerList = new ArrayList<>();
         String firstLine;
         String secondLine;
-        Path inFile;
         String[] customerData2PartsFirstLine = new String[2];
         LocalDate paymentDateSecondLine = null;
-        inFile = Paths.get(customerFile);
+        Path inFile = Paths.get(customerFile);
 
         try(Scanner fileReader = new Scanner(inFile)){
             while (fileReader.hasNext()) {
@@ -55,8 +51,8 @@ public class ReaderWriterUtility{
 
         try (PrintWriter write = new PrintWriter(new FileWriter(fileOutPath, true))) {
 
-            write.print("Namn: " + activeMember.fullName+ "\nPersonnummer: " + activeMember.birthNumber +
-                    "\nTräningsdatum :" + LocalDate.now());
+            write.print("Namn: " + activeMember.fullName+ " Personnummer: " + activeMember.birthNumber +
+                    " Träningsdatum: " + LocalDate.now());
             write.print("\n");
 
         }
@@ -71,5 +67,24 @@ public class ReaderWriterUtility{
             System.out.println("Något gick fel " + e.getMessage());
         }
 
+    }
+    public static void filePrinter(String activeMembersFile){
+        String tempLine;
+        try (BufferedReader reader = new BufferedReader
+                (new FileReader(activeMembersFile))){
+            while ((tempLine = reader.readLine()) != null){
+                System.out.println(tempLine);
+            }
+
+        }
+        catch (FileNotFoundException e){
+            System.out.println("Filen hittades inte:" + e.getMessage());
+        }
+        catch (IOException e){
+            System.out.println("Det gick inte att läsa in filen: " + e.getMessage());
+        }
+        catch (Exception e){
+            System.out.println("Något blev fel" + e.getMessage());
+        }
     }
 }
