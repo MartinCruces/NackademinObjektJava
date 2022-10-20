@@ -1,8 +1,8 @@
 package Sprint2.Inlämningsuppgift;
 
 
+
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -12,26 +12,48 @@ public class BestGymEver implements Serializable {
 
     BestGymEver() {
         MethodHandler method = new MethodHandler();
-        Scanner input = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         String fileInPath = "src/Sprint2/Inlämningsuppgift/customer.txt";
         String fileOutPath = "src/Sprint2/Inlämningsuppgift/activeMembers.txt";
         List <Customer> customerList = ReaderWriterUtility.fileReader(fileInPath);
-        List<Customer> activeCustomer = new ArrayList<>();
-        String testinput = "8512021234";
-        String testinput2 = "7703021234";
-        int position = 0;
+        List<Customer> activeCustomers = new ArrayList<>();
+        Customer activeCustomer;
+
+        String input = null;
+
+        while (true){
+
+            try{
+                System.out.println("Välkommen kundhittaren till Best Gym Ever\n" +
+                        "Skriv in fullständigt namn eller personnummer för kontoll mot registret\n" +
+                        "Vill du se lista på vilka som tränar skriv lista\n" +
+                        "Vill du avsluta skriv exit");
+                input = scanner.nextLine();
+            }
+            catch (Exception e) {
+                System.out.println("Något gick fel " + e.getMessage());
+            }
+            input = input.trim().toUpperCase();
+            activeCustomer = method.checkCustomerExist(input, customerList);
+            if (activeCustomer != null){
+
+                System.out.println(activeCustomer.fullName + " Medlemmen finns i systemet");
+
+                ReaderWriterUtility.fileWriter(fileOutPath, activeCustomer);
+            } else if (input.equals(SwitchChoice.LÄSA.toString())) {
+                System.out.println("Test");
+            } else System.out.println("Kunden finns inte i registret\n");
 
 
-            System.out.println("Välkommen till Best Gym!");
-
-
-        if (method.checkCustomerExist(testinput2, customerList) == true){
-            System.out.println("hen finns!");
-            activeCustomer =  method.addPayingCustomer(testinput2,customerList);
         }
 
 
-        ReaderWriterUtility.fileWriter(fileOutPath, activeCustomer);
+
+
+
+
+
+
 
 
         /*for(Customer c2 : customerList){

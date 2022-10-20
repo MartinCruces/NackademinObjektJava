@@ -47,10 +47,10 @@ class FileReaderTest {
         testCustomerList.add(testCustomer1);
         testCustomerList.add(testCustomer2);
 
-        assertTrue(test.checkCustomerExist(testBirthNr1,testCustomerList) == true);
-        assertTrue(test.checkCustomerExist(testName2, testCustomerList) == true);
-        assertTrue(test.checkCustomerExist(testNameFalse, testCustomerList)== false);
-        assertFalse(test.checkCustomerExist(testNameFalse,testCustomerList) == true);
-        assertFalse(test.checkCustomerExist(testDate1.toString(), testCustomerList) == true);
+        assertTrue(test.checkCustomerExist(testBirthNr1,testCustomerList) != null);
+        assertTrue(test.checkCustomerExist(testName2, testCustomerList) != null);
+        assertTrue(test.checkCustomerExist(testNameFalse, testCustomerList)== null);
+        //assertFalse(test.checkCustomerExist(testNameFalse,testCustomerList). == true);
+        //assertFalse(test.checkCustomerExist(testDate1.toString(), testCustomerList) == true);
     }
 }

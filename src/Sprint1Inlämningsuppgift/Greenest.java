@@ -23,7 +23,8 @@ public class Greenest{
         for (Plants s : totalPlants) {
             list += "\n" + s.getNamePlant();
         }
-        String input;
+        String input = null;
+        if (input.equals(igge.getNamePlant()));
         while (true) {
             try{
             input = JOptionPane.showInputDialog(  list + "\n" +

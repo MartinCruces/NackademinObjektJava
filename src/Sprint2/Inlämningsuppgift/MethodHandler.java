@@ -22,31 +22,33 @@ public class MethodHandler {
         return LocalDate.parse(date.trim());
     }
 
-    public boolean checkCustomerExist(String input, List<Customer> customerList){
-        boolean check = false;
+    public Customer checkCustomerExist(String input, List<Customer> customerList){
+
         for(Customer c : customerList){
             if (input.equals(c.fullName)) {
-                check = true;
+
+                return c;
             }
             else if (input.equals(c.birthNumber)){
-                check = true;
+                return c;
             }
         }
-        return check;
+        return null;
     }
     public List<Customer> addPayingCustomer(String input, List<Customer> customerList){
         List<Customer> activeCustomer = new ArrayList<>();
-        for(Customer c : customerList)
-            if (input.equals(c.fullName)){
+        for(Customer c : customerList) {
+            if (input.equals(c.fullName)) {
+                if (checkPaymentDate(c.paymentDate) == true) {
+                    activeCustomer.add(c);
+                }
+            } else if (input.equals(c.birthNumber)) {
                 if (checkPaymentDate(c.paymentDate) == true) {
                     activeCustomer.add(c);
                 }
             }
-            else if (input.equals(c.birthNumber)){
-                if (checkPaymentDate(c.paymentDate) == true) {
-                    activeCustomer.add(c);
-                }
-            }
-            return activeCustomer;
+            else System.out.println("Kunden har inte betalt medlemsavgiften");
+        }
+        return activeCustomer;
     }
 }

@@ -14,14 +14,14 @@ import java.util.Scanner;
 
 public class ReaderWriterUtility{
 
-    public static List<Customer> fileReader (String customers) {
+    public static List<Customer> fileReader (String customerFile) {
         List<Customer> customerList = new ArrayList<>();
         String firstLine;
         String secondLine;
         Path inFile;
         String[] customerData2PartsFirstLine = new String[2];
         LocalDate paymentDateSecondLine = null;
-        inFile = Paths.get(customers);
+        inFile = Paths.get(customerFile);
 
         try(Scanner fileReader = new Scanner(inFile)){
             while (fileReader.hasNext()) {
@@ -32,7 +32,7 @@ public class ReaderWriterUtility{
                     paymentDateSecondLine = LocalDate.parse(secondLine);
                 }
 
-                Customer c = new Customer(customerData2PartsFirstLine[0].trim(), customerData2PartsFirstLine[1].trim(),
+                Customer c = new Customer(customerData2PartsFirstLine[0].trim(), customerData2PartsFirstLine[1].trim().toUpperCase(),
                         paymentDateSecondLine);
 
                 customerList.add(c);
@@ -50,16 +50,15 @@ public class ReaderWriterUtility{
         }
         return customerList;
     }
-    public static void fileWriter (String fileOutPath, List<Customer> activeMembers) {
+    public static void fileWriter (String fileOutPath, Customer activeMember) {
 
 
         try (PrintWriter write = new PrintWriter(new FileWriter(fileOutPath, true))) {
 
-                for(Customer customer : activeMembers){
-                    write.print("Namn: " + customer.fullName+ "\nPersonnummer: " + customer.birthNumber +
-                            "\nTräningsdatum :" + LocalDate.now());
-                    write.print("\n");
-                }
+            write.print("Namn: " + activeMember.fullName+ "\nPersonnummer: " + activeMember.birthNumber +
+                    "\nTräningsdatum :" + LocalDate.now());
+            write.print("\n");
+
         }
         catch (FileNotFoundException e){
             System.out.println("Filen hittades inte " + e.getMessage());
