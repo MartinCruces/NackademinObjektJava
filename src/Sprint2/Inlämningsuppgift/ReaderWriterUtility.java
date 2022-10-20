@@ -1,6 +1,9 @@
 package Sprint2.Inlämningsuppgift;
 
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -47,7 +50,27 @@ public class ReaderWriterUtility{
         }
         return customerList;
     }
-    public void fileWriter (){
+    public static void fileWriter (String fileOutPath, List<Customer> activeMembers) {
+
+
+        try (PrintWriter write = new PrintWriter(new FileWriter(fileOutPath, true))) {
+
+                for(Customer customer : activeMembers){
+                    write.print("Namn: " + customer.fullName+ "\nPersonnummer: " + customer.birthNumber +
+                            "\nTräningsdatum :" + LocalDate.now());
+                    write.print("\n");
+                }
+        }
+        catch (FileNotFoundException e){
+            System.out.println("Filen hittades inte " + e.getMessage());
+        }
+        catch (IOException e) {
+            System.out.println("Det gick inte att skriva till filen " + e.getMessage());
+        }
+        catch (Exception e){
+
+            System.out.println("Något gick fel " + e.getMessage());
+        }
 
     }
 }

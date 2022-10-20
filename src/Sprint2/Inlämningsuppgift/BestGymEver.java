@@ -1,32 +1,37 @@
 package Sprint2.Inlämningsuppgift;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.time.Instant;
+
+import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
-public class BestGymEver {
+public class BestGymEver implements Serializable {
 
 
     BestGymEver() {
-        FileReader checkPayment = new FileReader();
-        String filePath = "src/Sprint2/Inlämningsuppgift/customer.txt";
-        List <Customer> customerList = ReaderWriterUtility.fileReader(filePath);
-        List<String> activeCustomer = new ArrayList<>();
+        MethodHandler method = new MethodHandler();
+        Scanner input = new Scanner(System.in);
+        String fileInPath = "src/Sprint2/Inlämningsuppgift/customer.txt";
+        String fileOutPath = "src/Sprint2/Inlämningsuppgift/activeMembers.txt";
+        List <Customer> customerList = ReaderWriterUtility.fileReader(fileInPath);
+        List<Customer> activeCustomer = new ArrayList<>();
+        String testinput = "8512021234";
+        String testinput2 = "7703021234";
+        int position = 0;
 
-        for (Customer c1 : customerList){
-            if(checkPayment.checkPaymentDate(c1.paymentDate) == true){
-                activeCustomer.add(c1.fullName);
-                activeCustomer.add(LocalDate.now().toString());
-            }
+
+            System.out.println("Välkommen till Best Gym!");
+
+
+        if (method.checkCustomerExist(testinput2, customerList) == true){
+            System.out.println("hen finns!");
+            activeCustomer =  method.addPayingCustomer(testinput2,customerList);
         }
 
-        for (String s : activeCustomer){
-            System.out.println(s);
-        }
+
+        ReaderWriterUtility.fileWriter(fileOutPath, activeCustomer);
 
 
         /*for(Customer c2 : customerList){

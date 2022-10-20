@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class FileReaderTest {
 
-    FileReader test = new FileReader();
+    MethodHandler test = new MethodHandler();
 
     @Test
     public void checkPaymentDateTest(){

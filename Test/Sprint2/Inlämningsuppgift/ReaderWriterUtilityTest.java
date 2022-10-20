@@ -25,7 +25,7 @@ class ReaderWriterUtilityTest {
         LocalDate testCustomer2 = LocalDate.of(2019, 12, 02);
 
         assertEquals(customers.size(), 2);
-        assertEquals(customers.get(0).birtNumber, "7703021234");
+        assertEquals(customers.get(0).birthNumber, "7703021234");
         assertTrue(customers.get(1).paymentDate.equals(testCustomer2));
         assertFalse(customers.get(0).paymentDate.equals(testCustomer2));
         assertEquals(customers.get(1).fullName, "Bear Belle");

@@ -2,8 +2,9 @@ package Sprint2.Inlämningsuppgift;
 
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
-public class FileReader {
+public class MethodHandler {
 
     public boolean checkPaymentDate(LocalDate payDate){
         boolean paymentValidation;
@@ -27,13 +28,25 @@ public class FileReader {
             if (input.equals(c.fullName)) {
                 check = true;
             }
-            else if (input.equals(c.birtNumber)){
+            else if (input.equals(c.birthNumber)){
                 check = true;
             }
         }
         return check;
     }
-
-
-
+    public List<Customer> addPayingCustomer(String input, List<Customer> customerList){
+        List<Customer> activeCustomer = new ArrayList<>();
+        for(Customer c : customerList)
+            if (input.equals(c.fullName)){
+                if (checkPaymentDate(c.paymentDate) == true) {
+                    activeCustomer.add(c);
+                }
+            }
+            else if (input.equals(c.birthNumber)){
+                if (checkPaymentDate(c.paymentDate) == true) {
+                    activeCustomer.add(c);
+                }
+            }
+            return activeCustomer;
+    }
 }
