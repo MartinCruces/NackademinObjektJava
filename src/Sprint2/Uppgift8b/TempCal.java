@@ -1,25 +1,33 @@
-package Sprint2.Uppgift8a;
+package Sprint2.Uppgift8b;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class TempCal {
 
-    protected String tempLine;
-    final String tempPath = "src/Sprint2/Uppgift8a/temp.txt";
-    public double parseStringToDouble(String stringNr){
-        double temp;
-        stringNr.trim();
-        stringNr = stringNr.replaceAll(",", ".");
-        temp = Double.parseDouble(stringNr);
 
-       return temp;
-    }
+     Path tempPath = Paths.get("src/Sprint2/Uppgift8a/temp.txt");
 
-    public List<Double> generateListFromFile(String tempPath){
+
+    public List<Double> generateListFromFile(Path tempPath) {
         List<Double> tempList = new ArrayList<>();
+        try (Scanner sc = new Scanner(tempPath)) {
+            while (sc.hasNextDouble()) {
+                tempList.add(sc.nextDouble());
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return tempList;
+    }
+        /*List<Double> tempList = new ArrayList<>();
         try(BufferedReader br = new BufferedReader
                 (new FileReader(tempPath))){
             while ((tempLine = br.readLine()) != null){
@@ -33,7 +41,7 @@ public class TempCal {
             System.exit(0);
         }
         return tempList;
-    }
+    }*/
 
     public double calcHighestValue(List<Double> tempList){
         double highTemp = -Double.MAX_VALUE;

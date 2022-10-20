@@ -1,15 +1,18 @@
-package Sprint2.Uppgift8a;
+package Sprint2.Uppgift8b;
 
+import Sprint2.Uppgift8a.TempCal;
 import org.junit.jupiter.api.Test;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class TempCalTest {
 
 
-    TempCal test = new TempCal();
+    Sprint2.Uppgift8a.TempCal test = new TempCal();
 
     @Test
     public void parseStringToDouble(){

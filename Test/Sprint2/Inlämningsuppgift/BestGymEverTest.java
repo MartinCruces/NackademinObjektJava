@@ -1,0 +1,12 @@
+package Sprint2.Inlämningsuppgift;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class BestGymEverTest {
+
+    //@Test
+    
+
+}
