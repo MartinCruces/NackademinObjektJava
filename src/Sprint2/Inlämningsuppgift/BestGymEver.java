@@ -7,6 +7,13 @@ import java.util.Scanner;
 public class BestGymEver implements Serializable {
 
     BestGymEver() {
+        /* In Main program there is paths to files for read/write operations.
+        The customer text-file is already in use and inserted into a list when the program starts.
+        The user can check names or person-number in the list if they are members. If there is a hit,
+        the program checks if the customer have valid payment for the membership. If the customer have valid payment,
+        the customer is added in a text-file for active members with date of training for followups.
+        The user can choose to read the file.
+         */
         MethodHandler method = new MethodHandler();
         String fileInPath = "src/Sprint2/Inlämningsuppgift/customer.txt";
         String fileOutPath = "src/Sprint2/Inlämningsuppgift/activeMembers.txt";
@@ -20,7 +27,7 @@ public class BestGymEver implements Serializable {
             try{
                 System.out.println(
                         "Skriv in fullständigt namn eller personnummer för kontoll mot registret\n" +
-                        "Vill du läsa aktivitetslistan för aktiva medlemmar, skriv: läsa\n" +
+                        "Vill du läsa aktivitetsfilen för aktiva medlemmar, skriv: läsa\n" +
                         "Vill du avsluta skriv: exit");
                 input = scanner.nextLine();
             }
@@ -31,10 +38,10 @@ public class BestGymEver implements Serializable {
             activeCustomer = method.checkCustomerExist(input, customerList);
 
             if (activeCustomer != null){
-                System.out.println(activeCustomer.fullName + " Medlemmen finns i registret");
+                System.out.println(activeCustomer.fullName + " Medlemmen finns i registret\n");
                 if(method.checkPaymentDate(activeCustomer.paymentDate) == true){
                     ReaderWriterUtility.fileWriter(fileOutPath, activeCustomer);
-                    System.out.println("Medlemmen är inlagt i aktivitetloggen");
+                    System.out.println("Medlemmen är inlagd i aktivitetfilen\n");
                 }
             }
             else if (input.equals(MenuChoice.LÄSA.toString())) {

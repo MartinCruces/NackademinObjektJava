@@ -14,7 +14,7 @@ class MethodHandlerTest {
     public void checkPaymentDateTest(){
 
         LocalDate dateOK = LocalDate.now();
-        LocalDate dateNotOK = LocalDate.of(2021, 04, 21);
+        LocalDate dateNotOK = LocalDate.of(2021, 10, 20);
         System.out.println(dateNotOK);
 
         assertTrue(test.checkPaymentDate(dateOK) == true);
@@ -22,8 +22,6 @@ class MethodHandlerTest {
         assertTrue(test.checkPaymentDate(dateNotOK) == false);
         assertFalse(test.checkPaymentDate(dateOK) == false);
     }
-
-
 
     @Test
     public void checkCustomerExist(){
@@ -33,7 +31,7 @@ class MethodHandlerTest {
         String testBirthNr2 = "8204021234";
         String testNameFalse = "Bertil Hansson";
         LocalDate testDate1 = LocalDate.of(2022,10,5);
-        LocalDate testDate2 = LocalDate.of(2021,04,29);
+        LocalDate testDate2 = LocalDate.of(2021,4,29);
         Customer testCustomer1 = new Customer(testBirthNr1,testName1, testDate1);
         Customer testCustomer2 = new Customer(testBirthNr2, testName2, testDate2);
         List<Customer> testCustomerList = new ArrayList<>();
@@ -43,7 +41,11 @@ class MethodHandlerTest {
         assertTrue(test.checkCustomerExist(testBirthNr1,testCustomerList) != null);
         assertTrue(test.checkCustomerExist(testName2, testCustomerList) != null);
         assertTrue(test.checkCustomerExist(testNameFalse, testCustomerList)== null);
-        //assertFalse(test.checkCustomerExist(testNameFalse,testCustomerList). == true);
-        //assertFalse(test.checkCustomerExist(testDate1.toString(), testCustomerList) == true);
+        assertFalse(test.checkCustomerExist(testNameFalse,testCustomerList) != null);
+        assertFalse(test.checkCustomerExist(testDate1.toString(), testCustomerList) != null);
+        assert(test.checkCustomerExist(testName1, testCustomerList).fullName == "Alhambra Aromes");
+        assert(test.checkCustomerExist(testName1, testCustomerList).fullName != "Bear Belle");
+        assert(test.checkCustomerExist(testBirthNr1, testCustomerList).birthNumber == "7703021234");
+        assert(test.checkCustomerExist(testBirthNr2, testCustomerList).birthNumber == "8204021234");
     }
 }

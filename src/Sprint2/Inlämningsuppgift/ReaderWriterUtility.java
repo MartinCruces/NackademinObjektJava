@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ReaderWriterUtility{
-
+        //Utilities for reading, writing and printing,
     public static List<Customer> fileReaderToList (String customerFile) {
         List<Customer> customerList = new ArrayList<>();
         String firstLine;
@@ -28,25 +28,28 @@ public class ReaderWriterUtility{
                     paymentDateSecondLine = LocalDate.parse(secondLine);
                 }
 
-                Customer c = new Customer(customerData2PartsFirstLine[0].trim(), customerData2PartsFirstLine[1].trim().toUpperCase(),
+                Customer c = new Customer(customerData2PartsFirstLine[0].trim(),
+                        customerData2PartsFirstLine[1].trim().toUpperCase(),
                         paymentDateSecondLine);
 
                 customerList.add(c);
-
             }
         }
 
         catch (NoSuchFileException e){
-            e.printStackTrace();
             System.out.println("Filen hittades inte: " + e.getMessage());
+            e.printStackTrace();
+            System.exit(0);
         }
         catch (IOException e){
-            e.printStackTrace();
             System.out.println("Något med inläsningen gick fel: " + e.getMessage());
+            e.printStackTrace();
+            System.exit(0);
         }
         catch (Exception e){
-            e.printStackTrace();
             System.out.println("Något gick fel" + e.getMessage());
+            e.printStackTrace();
+            System.exit(0);
         }
         return customerList;
     }
@@ -58,17 +61,18 @@ public class ReaderWriterUtility{
             write.print("Namn: " + activeMember.fullName+ " Personnummer: " + activeMember.birthNumber +
                     " Träningsdatum: " + LocalDate.now());
             write.print("\n");
-
         }
         catch (FileNotFoundException e){
             System.out.println("Filen hittades inte " + e.getMessage());
+            e.printStackTrace();
         }
         catch (IOException e) {
             System.out.println("Det gick inte att skriva till filen " + e.getMessage());
+            e.printStackTrace();
         }
         catch (Exception e){
-
             System.out.println("Något gick fel " + e.getMessage());
+            e.printStackTrace();
         }
 
     }
@@ -77,17 +81,20 @@ public class ReaderWriterUtility{
         try (BufferedReader reader = new BufferedReader
                 (new FileReader(activeMembersFile))){
             while ((tempLine = reader.readLine()) != null){
-                System.out.println(tempLine);
+                System.out.println(tempLine + "\n");
             }
         }
         catch (FileNotFoundException e){
             System.out.println("Filen hittades inte:" + e.getMessage());
+            e.printStackTrace();
         }
         catch (IOException e){
             System.out.println("Det gick inte att läsa in filen: " + e.getMessage());
+            e.printStackTrace();
         }
         catch (Exception e){
             System.out.println("Något blev fel" + e.getMessage());
+            e.printStackTrace();
         }
     }
 }

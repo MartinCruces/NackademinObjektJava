@@ -8,22 +8,20 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CustomerTest {
 
-
     @Test
 
     public void setTestCustomer(){
 
         Customer testCustomer1 = new Customer("9507252361", "Mackan Mickelsson",
-                LocalDate.of(2021, 10,07));
+                LocalDate.of(2021, 10,7));
         Customer testCustomer2 = new Customer("0109248131", "Ana Santoz",
-                LocalDate.of(2020, 05, 02));
+                LocalDate.of(2020, 5, 2));
 
-        assertTrue(testCustomer1.fullName.equals("Mackan Mickelsson"));
-        assertFalse(testCustomer1.fullName.equals("Ana Santoz"));
-        assertTrue(testCustomer2.birthNumber.equals("0109248131"));
-        assertFalse(testCustomer2.birthNumber.equals("9507252361"));
-        assertTrue(testCustomer1.paymentDate.equals(LocalDate.of(2021, 10,07)));
-        assertFalse(testCustomer1.paymentDate.equals(LocalDate.of(2020, 05, 02)));
-
+        assert(testCustomer1.fullName.equals("Mackan Mickelsson"));
+        assert(!testCustomer1.fullName.equals("Ana Santoz"));
+        assert(testCustomer2.birthNumber.equals("0109248131"));
+        assert(!testCustomer2.birthNumber.equals("9507252361"));
+        assert(testCustomer1.paymentDate.equals(LocalDate.of(2021, 10,7)));
+        assert(!testCustomer1.paymentDate.equals(LocalDate.of(2020, 5, 2)));
     }
 }

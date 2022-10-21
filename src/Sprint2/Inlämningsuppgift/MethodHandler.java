@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class MethodHandler {
-
+        //Methods for test if the customer exist and if payment is still valid.
     public boolean checkPaymentDate(LocalDate payDate) {
         boolean paymentValidation = false;
 
