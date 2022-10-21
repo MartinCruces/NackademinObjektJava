@@ -11,7 +11,7 @@ class ReaderWriterUtilityTest {
 
     ReaderWriterUtility test = new ReaderWriterUtility();
     String fileToRead = "Test/Sprint2/Inlämningsuppgift/readTestFile.txt";
-    String fileToWrite = "Test/Spring2/InlämningsUppgift/writeTestFile.txt";
+    String fileToWrite = "Test/Sprint2/Inlämningsuppgift/writeTestFile.txt";
 
     @Test
     public void fileReaderToListTest (){
@@ -31,9 +31,21 @@ class ReaderWriterUtilityTest {
         assertEquals(customers.get(1).fullName, "Bear Belle".toUpperCase());
         assertNotEquals(customers.get(1).fullName, "Alhambra Aromes".toUpperCase());
     }
+    @Test
+    public void fileWriterTest (){
 
-    public void filePrinterTest (String path){
+        Customer testCustomer = new Customer("8510277690", "Maria Burk",
+                LocalDate.of(2022,01,06));
 
+        ReaderWriterUtility.fileWriter(fileToWrite, testCustomer);
+
+
+        }
+    @Test
+
+    public final void filePrinterTest (){
+
+        ReaderWriterUtility.filePrinter(fileToWrite);
 
     }
 

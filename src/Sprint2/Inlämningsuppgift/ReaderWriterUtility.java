@@ -44,6 +44,10 @@ public class ReaderWriterUtility{
             e.printStackTrace();
             System.out.println("Något med inläsningen gick fel: " + e.getMessage());
         }
+        catch (Exception e){
+            e.printStackTrace();
+            System.out.println("Något gick fel" + e.getMessage());
+        }
         return customerList;
     }
     public static void fileWriter (String fileOutPath, Customer activeMember) {
@@ -75,7 +79,6 @@ public class ReaderWriterUtility{
             while ((tempLine = reader.readLine()) != null){
                 System.out.println(tempLine);
             }
-
         }
         catch (FileNotFoundException e){
             System.out.println("Filen hittades inte:" + e.getMessage());

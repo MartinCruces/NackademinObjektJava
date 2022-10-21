@@ -1,24 +1,18 @@
 package Sprint2.Inlämningsuppgift;
 
-
-
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class BestGymEver implements Serializable {
 
-
     BestGymEver() {
         MethodHandler method = new MethodHandler();
-        Scanner scanner = new Scanner(System.in);
         String fileInPath = "src/Sprint2/Inlämningsuppgift/customer.txt";
         String fileOutPath = "src/Sprint2/Inlämningsuppgift/activeMembers.txt";
         List <Customer> customerList = ReaderWriterUtility.fileReaderToList(fileInPath);
-        List<Customer> activeCustomers = new ArrayList<>();
         Customer activeCustomer;
-
+        Scanner scanner = new Scanner(System.in);
         String input = null;
         System.out.println("Välkommen till kundhittaren för Best Gym Ever");
 
@@ -37,37 +31,21 @@ public class BestGymEver implements Serializable {
             activeCustomer = method.checkCustomerExist(input, customerList);
 
             if (activeCustomer != null){
-                System.out.println(activeCustomer.fullName + " Medlemmen finns i systemet");
+                System.out.println(activeCustomer.fullName + " Medlemmen finns i registret");
                 if(method.checkPaymentDate(activeCustomer.paymentDate) == true){
                     ReaderWriterUtility.fileWriter(fileOutPath, activeCustomer);
                     System.out.println("Medlemmen är inlagt i aktivitetloggen");
                 }
             }
-            else if (input.equals(SwitchChoice.LÄSA.toString())) {
+            else if (input.equals(MenuChoice.LÄSA.toString())) {
                 ReaderWriterUtility.filePrinter(fileOutPath);
             }
-            else if (input.equals(SwitchChoice.EXIT.toString())){
+            else if (input.equals(MenuChoice.EXIT.toString())){
                 System.out.println("Tack och välkommen åter");
                 System.exit(0);
             }
             else System.out.println(input + " finns inte i registret\n");
-
-
         }
-
-
-
-
-
-
-
-
-
-
-        /*for(Customer c2 : customerList){
-            System.out.printf("Namn: %s\nPersonnummer: %s\nBetalt avgift: %s\n",c.fullName, c.birtNumber, c.paymentDate );
-        }*/
-
 
     }
     public static void main(String[] args) {
