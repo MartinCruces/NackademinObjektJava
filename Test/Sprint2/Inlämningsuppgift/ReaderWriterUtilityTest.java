@@ -38,15 +38,11 @@ class ReaderWriterUtilityTest {
                 LocalDate.of(2022,01,06));
 
         ReaderWriterUtility.fileWriter(fileToWrite, testCustomer);
+    }
 
-
-        }
     @Test
 
     public final void filePrinterTest (){
-
         ReaderWriterUtility.filePrinter(fileToWrite);
-
     }
-
 }

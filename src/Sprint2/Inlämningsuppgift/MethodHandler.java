@@ -14,7 +14,7 @@ public class MethodHandler {
             System.out.println("Medlemsavgiften är betald");
         } else if (payDate.isBefore(lastYearDate)) {
             paymentValidation = false;
-            System.out.println(("Medlemsavgiften är inte betald"));
+            System.out.println(("Medlemsavgiften är inte betald\n"));
         }
         return paymentValidation;
     }
