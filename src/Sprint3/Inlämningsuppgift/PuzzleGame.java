@@ -42,7 +42,7 @@ public class PuzzleGame extends JFrame implements ActionListener {
         //Shuffle the list before inserted into the grid.
         Collections.shuffle(buttonList);
 
-        //Insert buttons from list to grid and add actionListerner to buttons except blank/null button.
+        //Insert buttons from list to grid and add actionListener to buttons except blank/null button.
         for (JButton button : buttonList){
             gameBoard.add(button);
             if(!button.equals(null)) {
@@ -55,8 +55,24 @@ public class PuzzleGame extends JFrame implements ActionListener {
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
+    public int findIndex (String s){
+        int index = 0;
+        for(JButton button : buttonList){
+            if (button.getText().equals(s)){
+
+            }
+        }
+
+       return index;
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
+        JButton buttonPressed = (JButton) e.getSource();
+        int index = Integer.parseInt(buttonPressed.getText());
+        System.out.println( buttonList.get(index));
+
+
+
 
 
     }
