@@ -18,24 +18,6 @@ public class PuzzleGame extends JFrame implements ActionListener {
 
 
     List<JButton> buttonList = new ArrayList<JButton>();
-
-    JButton one =  new JButton("1");
-    JButton two =  new JButton("2");
-    JButton three =  new JButton("3");
-    JButton four =  new JButton("4");
-    JButton five =  new JButton("5");
-    JButton six =  new JButton("6");
-    JButton seven =  new JButton("7");
-    JButton eight =  new JButton("8");
-    JButton nine =  new JButton("9");
-    JButton ten =  new JButton("10");
-    JButton eleven =  new JButton("11");
-    JButton twelve =  new JButton("12");
-    JButton thirteen =  new JButton("13");
-    JButton fourteen =  new JButton("14");
-    JButton fifteen =  new JButton("15");
-    JButton blank =  new JButton(" ");
-
     JButton newGameButton = new JButton("Nytt Spel");
 
     public PuzzleGame () {
@@ -46,25 +28,28 @@ public class PuzzleGame extends JFrame implements ActionListener {
         gamePanel.add(newGamePanel, BorderLayout.SOUTH);
         newGamePanel.add(newGameButton);
         gameBoard.setLayout(new GridLayout(4,4));
-        int count = 0;
-        for (int i = 1; i <= 16; i++) {
-            JButton tempButton = new JButton(String.valueOf(count));
+            //Create list with 16 numbers 0-15.
+        for (int i = 0; i < 16; i++) {
+            JButton tempButton = new JButton(String.valueOf(i));
+            tempButton.setBackground(Color.white);
             buttonList.add(tempButton);
-
-            count++;
-
         }
+
+        //Place 0 in the list has number 0 and is set to null. It will be the blank button in the Grid
+        buttonList.get(0).setBackground(Color.YELLOW);
+        buttonList.get(0).setText(null);
+
+        //Shuffle the list before inserted into the grid.
         Collections.shuffle(buttonList);
 
-
-        for (JButton b : buttonList){
-            if (b.equals("0")){
-                gameBoard.add(blank);
-
+        //Insert buttons from list to grid and add actionListerner to buttons except blank/null button.
+        for (JButton button : buttonList){
+            gameBoard.add(button);
+            if(!button.equals(null)) {
+                button.addActionListener(this::actionPerformed);
             }
-            else gameBoard.add(b);
         }
-
+;
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
@@ -72,6 +57,7 @@ public class PuzzleGame extends JFrame implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
+
 
     }
 
