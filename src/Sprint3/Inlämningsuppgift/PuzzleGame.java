@@ -4,6 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 public class PuzzleGame extends JFrame implements ActionListener {
 
@@ -12,7 +16,8 @@ public class PuzzleGame extends JFrame implements ActionListener {
 
     JPanel newGamePanel = new JPanel();
 
-    JButton number[] = new JButton[15];
+
+    List<JButton> buttonList = new ArrayList<JButton>();
 
     JButton one =  new JButton("1");
     JButton two =  new JButton("2");
@@ -31,7 +36,7 @@ public class PuzzleGame extends JFrame implements ActionListener {
     JButton fifteen =  new JButton("15");
     JButton blank =  new JButton(" ");
 
-    JButton newGame = new JButton("Nytt Spel");
+    JButton newGameButton = new JButton("Nytt Spel");
 
     public PuzzleGame () {
 
@@ -39,25 +44,26 @@ public class PuzzleGame extends JFrame implements ActionListener {
         gamePanel.setLayout(new BorderLayout());
         gamePanel.add(gameBoard, BorderLayout.NORTH);
         gamePanel.add(newGamePanel, BorderLayout.SOUTH);
-        newGamePanel.add(newGame);
-
+        newGamePanel.add(newGameButton);
         gameBoard.setLayout(new GridLayout(4,4));
-        gameBoard.add(one);
-        gameBoard.add(two);
-        gameBoard.add(three);
-        gameBoard.add(four);
-        gameBoard.add(five);
-        gameBoard.add(six);
-        gameBoard.add(seven);
-        gameBoard.add(eight);
-        gameBoard.add(nine);
-        gameBoard.add(ten);
-        gameBoard.add(eleven);
-        gameBoard.add(twelve);
-        gameBoard.add(thirteen);
-        gameBoard.add(fourteen);
-        gameBoard.add(fifteen);
-        gameBoard.add(blank);
+        int count = 0;
+        for (int i = 1; i <= 16; i++) {
+            JButton tempButton = new JButton(String.valueOf(count));
+            buttonList.add(tempButton);
+
+            count++;
+
+        }
+        Collections.shuffle(buttonList);
+
+
+        for (JButton b : buttonList){
+            if (b.equals("0")){
+                gameBoard.add(blank);
+
+            }
+            else gameBoard.add(b);
+        }
 
         pack();
         setLocationRelativeTo(null);
