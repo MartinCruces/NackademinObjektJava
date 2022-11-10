@@ -13,6 +13,8 @@ public class PuzzleGame extends JFrame implements ActionListener {
     JPanel gamePanel = new JPanel();
     JPanel newGamePanel = new JPanel();
     List<JButton> buttonList = new ArrayList<JButton>();
+
+    List<JButton> solvedList = new ArrayList<>();
     JButton newGameButton = new JButton("Nytt Spel");
 
     public PuzzleGame () {
@@ -55,16 +57,23 @@ public class PuzzleGame extends JFrame implements ActionListener {
             tempButton.setBackground(Color.CYAN);
             startList.add(tempButton);
             tempButton.addActionListener(this);
+
         }
         startList.get(0).setBackground(Color.YELLOW);
         startList.get(0).setVisible(false);
+        int j = 1;
+        for (int i = 0; i < 15 ; i++) {
+            Collections.swap(startList, i, j++);
+
+        }
+        solvedList = startList;
+        Collections.swap(startList, 15, 14);
         Collections.shuffle(startList);
 
         return startList;
     }
 
     public boolean moveCheck (int indexOfZero, int pressedButton){
-
 
         if (indexOfZero/4 == pressedButton/4) {
             if(Math.abs(indexOfZero-pressedButton) == 1)
@@ -91,14 +100,11 @@ public class PuzzleGame extends JFrame implements ActionListener {
 
     public boolean isSolved (List<JButton> buttonList){
 
-        int i = 1;
-        for (JButton b : buttonList){
-            if(!b.getText().equals(i)){
-                return false;
-            }
-            i++;
+        if (buttonList == solvedList){
+            return true;
         }
-        return true;
+
+        return false;
     }
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -107,13 +113,20 @@ public class PuzzleGame extends JFrame implements ActionListener {
 
 
         //JButton tempButton = buttonPressed;
-        if(moveCheck(findIndexOfZero(),buttonList.indexOf(buttonPressed)) == true)
-        Collections.swap(buttonList, findIndexOfZero(), buttonList.indexOf(buttonPressed));
+        if(moveCheck(findIndexOfZero(),buttonList.indexOf(buttonPressed)) == true){
+            Collections.swap(buttonList, findIndexOfZero(), buttonList.indexOf(buttonPressed));
 
-        System.out.println(buttonList.indexOf(buttonPressed));
+            System.out.println(buttonList.indexOf(buttonPressed));
+            setBord(buttonList);
 
-        setBord(buttonList);
-        gamePanel.revalidate();
+            if (isSolved(buttonList) == true){
+                JOptionPane.showMessageDialog(null, "Grattis du vann!");
+            }
+
+            gamePanel.revalidate();
+
+        }
+
     }
 
     public static void main(String[] args) {
