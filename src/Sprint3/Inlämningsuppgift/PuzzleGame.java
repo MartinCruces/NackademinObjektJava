@@ -63,10 +63,21 @@ public class PuzzleGame extends JFrame implements ActionListener {
         return startList;
     }
 
-    public boolean moveCheck (int indexOfZero, JButton pressedButton){
-        boolean check = false;
+    public boolean moveCheck (int indexOfZero, int pressedButton){
 
-        return check;
+
+        if (indexOfZero/4 == pressedButton/4) {
+            if(Math.abs(indexOfZero-pressedButton) == 1)
+
+            return true;
+        }
+        if (indexOfZero%4 == pressedButton%4){
+            if(Math.abs(indexOfZero/4 -pressedButton/4) == 1)
+
+            return true;
+        }
+
+    return false;
     }
     public int findIndexOfZero (){
         int indexOfZero = 0;
@@ -77,12 +88,26 @@ public class PuzzleGame extends JFrame implements ActionListener {
         }
         return indexOfZero;
     }
+
+    public boolean isSolved (List<JButton> buttonList){
+
+        int i = 1;
+        for (JButton b : buttonList){
+            if(!b.getText().equals(i)){
+                return false;
+            }
+            i++;
+        }
+        return true;
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
 
         JButton buttonPressed = (JButton) e.getSource();
-        //JButton tempButton = buttonPressed;
 
+
+        //JButton tempButton = buttonPressed;
+        if(moveCheck(findIndexOfZero(),buttonList.indexOf(buttonPressed)) == true)
         Collections.swap(buttonList, findIndexOfZero(), buttonList.indexOf(buttonPressed));
 
         System.out.println(buttonList.indexOf(buttonPressed));
