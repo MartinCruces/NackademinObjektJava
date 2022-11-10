@@ -28,13 +28,6 @@ public class PuzzleGame extends JFrame implements ActionListener {
         buttonList = (createButtonList());
         setBord(buttonList);
 
-        //Create list with 16 numbers 0-15.
-        //Insert buttons from list to grid and add actionListener to buttons except blank/null button.
-        /*for (JButton button : createButtonList()){
-                button.setSize(30, 30);
-                gameBoard.add(button);
-                button.addActionListener(this::actionPerformed);
-        }*/
         System.out.println(findIndexOfZero());
         pack();
         setLocationRelativeTo(null);
@@ -47,7 +40,7 @@ public class PuzzleGame extends JFrame implements ActionListener {
         for (JButton button : buttons){
             button.setSize(30, 30);
             gameBoard.add(button);
-            button.addActionListener(this::actionPerformed);
+
         }
 
         return gameBoard;
@@ -60,6 +53,7 @@ public class PuzzleGame extends JFrame implements ActionListener {
             JButton tempButton = new JButton(String.valueOf(i));
             tempButton.setBackground(Color.CYAN);
             startList.add(tempButton);
+            tempButton.addActionListener(this);
         }
         startList.get(0).setBackground(Color.YELLOW);
         startList.get(0).setVisible(false);
@@ -67,6 +61,8 @@ public class PuzzleGame extends JFrame implements ActionListener {
 
         return startList;
     }
+
+
 
     public int findIndexOfZero (){
         int indexOfZero = 0;
@@ -83,16 +79,8 @@ public class PuzzleGame extends JFrame implements ActionListener {
 
         JButton buttonPressed = (JButton) e.getSource();
         //JButton tempButton = buttonPressed;
-
         Collections.swap(buttonList, findIndexOfZero(), buttonList.indexOf(buttonPressed));
-
-        for (JButton button : buttonList){
-            gameBoard.add(button);
-            button.addActionListener(this::actionPerformed);
-        }
-
         setBord(buttonList);
-
         gamePanel.revalidate();
 
 
