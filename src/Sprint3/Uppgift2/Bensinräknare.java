@@ -50,7 +50,6 @@ public class Bensinräknare extends JFrame implements ActionListener {
         consumedLitre.addActionListener(this);
 
 
-
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
