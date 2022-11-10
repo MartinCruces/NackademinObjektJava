@@ -16,25 +16,26 @@ public class PuzzleGame extends JFrame implements ActionListener {
     JButton newGameButton = new JButton("Nytt Spel");
 
     public PuzzleGame () {
-
+        newGame();
         add(gamePanel);
 
         gamePanel.setLayout(new BorderLayout());
         gamePanel.add(gameBoard, BorderLayout.NORTH);
         gamePanel.add(newGamePanel, BorderLayout.SOUTH);
         newGamePanel.add(newGameButton);
-        gameBoard.setLayout(new GridLayout(4,4));
-        gameBoard.setBackground(Color.yellow);
-        buttonList = (createButtonList());
-        setBord(buttonList);
-
         System.out.println(findIndexOfZero());
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
+    private void newGame (){
+        gameBoard = new JPanel(new GridLayout(4, 4));
+        gameBoard.setBackground(Color.yellow);
+        buttonList = (createButtonList());
+        setBord(buttonList);
 
+    }
     public JPanel setBord (List<JButton> buttons){
 
         for (JButton button : buttons){
@@ -62,8 +63,11 @@ public class PuzzleGame extends JFrame implements ActionListener {
         return startList;
     }
 
+    public boolean moveCheck (int indexOfZero, JButton pressedButton){
+        boolean check = false;
 
-
+        return check;
+    }
     public int findIndexOfZero (){
         int indexOfZero = 0;
         for(JButton button : buttonList){
@@ -76,14 +80,15 @@ public class PuzzleGame extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-
         JButton buttonPressed = (JButton) e.getSource();
         //JButton tempButton = buttonPressed;
+
         Collections.swap(buttonList, findIndexOfZero(), buttonList.indexOf(buttonPressed));
+
+        System.out.println(buttonList.indexOf(buttonPressed));
+
         setBord(buttonList);
         gamePanel.revalidate();
-
-
     }
 
     public static void main(String[] args) {
