@@ -24,6 +24,7 @@ public class PuzzleGame extends JFrame implements ActionListener {
         gamePanel.add(gameBoard, BorderLayout.NORTH);
         gamePanel.add(newGamePanel, BorderLayout.SOUTH);
         newGamePanel.add(newGameButton);
+        newGameButton.addActionListener(this::actionPerformed);
         System.out.println(findIndexOfZero());
         pack();
         setLocationRelativeTo(null);
@@ -47,7 +48,6 @@ public class PuzzleGame extends JFrame implements ActionListener {
 
         return gameBoard;
     }
-
     private List<JButton> createButtonList (){
 
         List <JButton> startList = new ArrayList<>();
@@ -81,8 +81,7 @@ public class PuzzleGame extends JFrame implements ActionListener {
 
             return true;
         }
-
-    return false;
+        return false;
     }
     private int findIndexOfZero (){
         int indexOfZero = 0;
@@ -93,38 +92,33 @@ public class PuzzleGame extends JFrame implements ActionListener {
         }
         return indexOfZero;
     }
-
+    private void shuffle(){
+        Collections.shuffle(buttonList);
+    }
     private boolean isSolved (List<JButton> buttonList){
 
         if(buttonList.equals(solvedList)){
             return true;
         }
-
         return false;
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-
-        JButton buttonPressed = (JButton) e.getSource();
-
-
-        //JButton tempButton = buttonPressed;
-        if(moveCheck(findIndexOfZero(),buttonList.indexOf(buttonPressed)) == true){
-            Collections.swap(buttonList, findIndexOfZero(), buttonList.indexOf(buttonPressed));
-
-
+        if (e.getSource() == newGameButton){
+            shuffle();
             setBord(buttonList);
-
+            revalidate();
+            repaint();
+        }
+        else if (moveCheck(findIndexOfZero(),buttonList.indexOf(e.getSource())) == true) {
+            Collections.swap(buttonList, findIndexOfZero(), buttonList.indexOf(e.getSource()));
+            setBord(buttonList);
             if (isSolved(buttonList) == true){
                 JOptionPane.showMessageDialog(null, "Grattis du vann!");
             }
-
             gamePanel.revalidate();
-
         }
-
     }
-
     public static void main(String[] args) {
         PuzzleGame game = new PuzzleGame();
     }
