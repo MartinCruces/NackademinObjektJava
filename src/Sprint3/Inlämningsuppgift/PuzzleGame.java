@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 public class PuzzleGame extends JFrame implements ActionListener {
     JPanel gameBoard = new JPanel();
     JPanel gamePanel = new JPanel();
