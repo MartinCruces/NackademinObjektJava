@@ -13,11 +13,10 @@ public class PuzzleGame extends JFrame implements ActionListener {
     JPanel gamePanel = new JPanel();
     JPanel newGamePanel = new JPanel();
     List<JButton> buttonList = new ArrayList<JButton>();
-
     List<JButton> solvedList = new ArrayList<>();
     JButton newGameButton = new JButton("Nytt Spel");
 
-    public PuzzleGame () {
+    private PuzzleGame () {
         newGame();
         add(gamePanel);
 
@@ -38,7 +37,7 @@ public class PuzzleGame extends JFrame implements ActionListener {
         setBord(buttonList);
 
     }
-    public JPanel setBord (List<JButton> buttons){
+    private JPanel setBord (List<JButton> buttons){
 
         for (JButton button : buttons){
             button.setSize(30, 30);
@@ -49,31 +48,28 @@ public class PuzzleGame extends JFrame implements ActionListener {
         return gameBoard;
     }
 
-    public List<JButton> createButtonList (){
+    private List<JButton> createButtonList (){
 
         List <JButton> startList = new ArrayList<>();
-        for (int i = 0; i < 16; i++) {
+        for (int i = 1; i <= 16; i++) {
             JButton tempButton = new JButton(String.valueOf(i));
+            JButton tem2 = tempButton;
+            solvedList.add(tem2);
             tempButton.setBackground(Color.CYAN);
             startList.add(tempButton);
             tempButton.addActionListener(this);
 
         }
-        startList.get(0).setBackground(Color.YELLOW);
-        startList.get(0).setVisible(false);
-        int j = 1;
-        for (int i = 0; i < 15 ; i++) {
-            Collections.swap(startList, i, j++);
+        startList.get(15).setBackground(Color.YELLOW);
+        startList.get(15).setVisible(false);
+        System.out.println(startList.get(15).toString());
 
-        }
-        solvedList = startList;
-        Collections.swap(startList, 15, 14);
-        Collections.shuffle(startList);
+        //Collections.shuffle(startList);
 
         return startList;
     }
 
-    public boolean moveCheck (int indexOfZero, int pressedButton){
+    private boolean moveCheck (int indexOfZero, int pressedButton){
 
         if (indexOfZero/4 == pressedButton/4) {
             if(Math.abs(indexOfZero-pressedButton) == 1)
@@ -88,19 +84,19 @@ public class PuzzleGame extends JFrame implements ActionListener {
 
     return false;
     }
-    public int findIndexOfZero (){
+    private int findIndexOfZero (){
         int indexOfZero = 0;
         for(JButton button : buttonList){
-            if (button.getText().equals("0")){
+            if (button.getText().equals("16")){
                 indexOfZero = buttonList.indexOf(button);
             }
         }
         return indexOfZero;
     }
 
-    public boolean isSolved (List<JButton> buttonList){
+    private boolean isSolved (List<JButton> buttonList){
 
-        if (buttonList == solvedList){
+        if(buttonList.equals(solvedList)){
             return true;
         }
 
@@ -116,7 +112,7 @@ public class PuzzleGame extends JFrame implements ActionListener {
         if(moveCheck(findIndexOfZero(),buttonList.indexOf(buttonPressed)) == true){
             Collections.swap(buttonList, findIndexOfZero(), buttonList.indexOf(buttonPressed));
 
-            System.out.println(buttonList.indexOf(buttonPressed));
+
             setBord(buttonList);
 
             if (isSolved(buttonList) == true){
