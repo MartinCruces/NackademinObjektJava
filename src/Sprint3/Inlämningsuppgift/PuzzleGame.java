@@ -12,7 +12,7 @@ public class PuzzleGame extends JFrame implements ActionListener {
     JPanel gameBoard = new JPanel();
     JPanel gamePanel = new JPanel();
     JPanel newGamePanel = new JPanel();
-    List<JButton> buttonList = new ArrayList<JButton>();
+    List<JButton> buttonList = new ArrayList<>();
     List<JButton> solvedList = new ArrayList<>();
     JButton newGameButton = new JButton("Nytt Spel");
 
